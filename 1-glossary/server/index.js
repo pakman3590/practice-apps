@@ -11,9 +11,6 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 // all words fetch
 app.get('/words', (req, res) => {
-
-  console.log('server GET')
-
   getWords((err, results) => {
     if (err) {
       res.sendStatus(404)
@@ -25,9 +22,6 @@ app.get('/words', (req, res) => {
 
 // new word post
 app.post('/words', (req, res) => {
-
-  console.log('server POST')
-
   let newWord = req.body.word;
   let newDef = req.body.definition;
   addWord(newWord, newDef, (err) => {
@@ -41,9 +35,6 @@ app.post('/words', (req, res) => {
 
 // delete word (expecting query containing word)
 app.delete('/words', (req, res) => {
-
-  console.log('server DEL')
-
   deleteWord(req.query.word, (err) => {
     if (err) {
       res.sendStatus(404)
@@ -55,9 +46,6 @@ app.delete('/words', (req, res) => {
 
 // edit word (expecting word and new def in body obj)
 app.put('/words', (req, res) => {
-
-  console.log('server EDIT');
-
   let word = req.body.word;
   let newDef = req.body.definition;
   editWord(word, newDef, ((err, response) => {
