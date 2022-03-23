@@ -7,7 +7,12 @@ class App extends React.Component {
   constructor(props) {
     super(props)
 
-
+    this.state = {
+      words: [{
+        word: 'dummy',
+        definition: 'I R Dummy'
+      }]
+    }
   }
 
   render() {
@@ -15,7 +20,7 @@ class App extends React.Component {
       <div>
         <AddWord />
         <SearchWord />
-        <List />
+        <List words={this.state.words}/>
       </div>
     )
   }

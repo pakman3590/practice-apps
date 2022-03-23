@@ -31,8 +31,6 @@ app.get('/words', (req, res) => {
   }
 })
 
-
-
 // new word post
 app.post('/words', (req, res) => {
   let newWord = req.body.word;
