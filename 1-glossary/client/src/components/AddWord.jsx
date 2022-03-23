@@ -23,7 +23,7 @@ class AddWord extends React.Component {
 
   render() {
     return (
-      <form className='addBar' onSubmit={SOME HELPER}>
+      <form className='addBar' /* onChange={} */>
         <label>
           Word:
           <input type='text' value={this.state.newWord} onChange={this.handleWordEntry}/>
