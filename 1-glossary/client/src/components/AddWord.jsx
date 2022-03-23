@@ -24,6 +24,7 @@ class AddWord extends React.Component {
   render() {
     return (
       <form className='addBar' /* onChange={} */>
+        <h4>Add A Word:</h4>
         <label>
           Word:
           <input type='text' value={this.state.newWord} onChange={this.handleWordEntry}/>
