@@ -9,16 +9,29 @@ app.use(express.json());
 // Serves up all static and generated assets in ../client/dist.
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// all words fetch
+// search OR all words fetch
 app.get('/words', (req, res) => {
-  getWords((err, results) => {
-    if (err) {
-      res.sendStatus(404)
-    } else {
-      res.status(200).send(results)
-    }
-  })
+  if (req.query.word) {
+    let search = req.query.word;
+    searchWord(search, (err, results) => {
+      if (err) {
+        res.sendStatus(404)
+      } else (
+        res.status(200).send(results)
+      )
+    })
+  } else {
+    getWords((err, results) => {
+      if (err) {
+        res.sendStatus(404)
+      } else {
+        res.status(200).send(results)
+      }
+    })
+  }
 })
+
+
 
 // new word post
 app.post('/words', (req, res) => {
@@ -55,18 +68,6 @@ app.put('/words', (req, res) => {
       res.status(200).send(response)
     }
   }))
-})
-
-// search word (expecting word as req query obj)
-app.get('/words', (req, res) => {
-  let search = req.query.word;
-  searchWord(search, (err, results) => {
-    if (err) {
-      res.sendStatus(404)
-    } else (
-      res.status(200).send(results)
-    )
-  })
 })
 
 app.listen(process.env.PORT);
