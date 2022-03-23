@@ -29,6 +29,7 @@ const addWord = (word, definition, callback) => {
 
 // get all words fx
 const getWords = (callback) => {
+  console.log('DB GET')
   Word.find({}, (err, results) => {
     if (err) {
       callback(err)

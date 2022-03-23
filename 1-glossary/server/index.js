@@ -22,6 +22,9 @@ app.get('/words', (req, res) => {
 
 // new word post
 app.post('/words', (req, res) => {
+
+  console.log('server GET')
+
   let newWord = req.body.word;
   let newDef = req.body.definition;
   addWord(newWord, newDef, (err) => {
