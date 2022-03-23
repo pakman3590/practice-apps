@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const {addWord, getWords} = require('./db.js')
+const {addWord, getWords, deleteWord} = require('./db.js')
 
 const app = express();
 
@@ -36,6 +36,20 @@ app.post('/words', (req, res) => {
     } else (
       res.sendStatus(201)
     )
+  })
+})
+
+// delete word (expecting query containing word)
+app.delete('/words', (req, res) => {
+
+  console.log('server DEL')
+
+  deleteWord(req.query.word, (err) => {
+    if (err) {
+      res.sendStatus(404)
+    } else {
+      res.sendStatus(200)
+    }
   })
 })
 
