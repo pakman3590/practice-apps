@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const {addWord, getWords, deleteWord} = require('./db.js')
+const {addWord, getWords, deleteWord, editWord} = require('./db.js')
 
 const app = express();
 
@@ -51,6 +51,23 @@ app.delete('/words', (req, res) => {
       res.sendStatus(200)
     }
   })
+})
+
+// edit word (expecting word and new def in body obj)
+app.put('/words', (req, res) => {
+
+  console.log('server EDIT');
+
+  let word = req.body.word;
+  let newDef = req.body.definition;
+  editWord(word, newDef, ((err, response) => {
+    if (err) {
+      res.sendStatus(404)
+    } else {
+      res.status(200).send(response)
+    }
+  }))
+
 })
 
 app.listen(process.env.PORT);

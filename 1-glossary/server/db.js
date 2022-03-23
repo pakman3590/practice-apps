@@ -46,12 +46,24 @@ module.exports = {
   // delete word fx
   deleteWord(word, callback) {
     console.log('DB DELETE');
-    console.log(word)
-    Word.deleteOne({ _id: word}, (err) => {
+    Word.deleteOne({ _id: word }, (err) => {
       if (err) {
         callback(err)
       } else {
         callback(null)
+      }
+    })
+  },
+
+  // update word fx
+  editWord(word, definition, callback) {
+    console.log('DB EDIT');
+    Word.updateOne({ _id: word }, { definition }, (err, response) => {
+      if (err) {
+        callback(err)
+      } else {
+        // sends back
+        callback(null, response)
       }
     })
   }
