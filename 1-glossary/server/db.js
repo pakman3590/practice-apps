@@ -30,3 +30,14 @@ const addWord = (word, definition, callback) => {
     .then(callback(null))
     .catch(callback(err))
 }
+
+// get all words fx
+const getWords = (callback) => {
+  Word.find({}, (err, results) => {
+    if (err) {
+      callback(err)
+    } else {
+      callback(null, results)
+    }
+  })
+}
