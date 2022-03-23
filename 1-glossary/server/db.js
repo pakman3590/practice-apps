@@ -41,3 +41,6 @@ const getWords = (callback) => {
     }
   })
 }
+
+module.exports.addWord = addWord;
+module.exports.getWords = getWords;
