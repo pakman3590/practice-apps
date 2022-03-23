@@ -22,6 +22,7 @@ app.get('/words', (req, res) => {
     })
   } else {
     getWords((err, results) => {
+      console.log(results)
       if (err) {
         res.sendStatus(404)
       } else {

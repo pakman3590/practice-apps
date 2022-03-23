@@ -3,14 +3,14 @@ import axios from 'axios';
 // fetch all request
 const fetchAll = (callback) => {
   axios.get('/words')
-    .then((response) => callback(response))
+    .then((response) => callback(response.data))
     .catch((err) => console.log(err))
 }
 
 // fetch search request
 const fetchSearch = (word, callback) => {
   axios.get('/words', { params: { word } })
-    .then((response) => callback(response))
+    .then((response) => callback(response.data))
     .catch((err) => console.log(err))
 }
 

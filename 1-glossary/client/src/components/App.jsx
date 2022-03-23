@@ -16,6 +16,14 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    fetchAll((results) => {
+      console.log(results)
+
+      this.setState({ words: results })
+    })
+  }
+
   render() {
     return(
       <div>
