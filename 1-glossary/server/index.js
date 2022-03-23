@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const {addWord, getWords, deleteWord, editWord} = require('./db.js')
+const {addWord, getWords, deleteWord, editWord, searchWord} = require('./db.js')
 
 const app = express();
 
@@ -55,7 +55,18 @@ app.put('/words', (req, res) => {
       res.status(200).send(response)
     }
   }))
+})
 
+// search word (expecting word as req query obj)
+app.get('/words', (req, res) => {
+  let search = req.query.word;
+  searchWord(search, (err, results) => {
+    if (err) {
+      res.sendStatus(404)
+    } else (
+      res.status(200).send(results)
+    )
+  })
 })
 
 app.listen(process.env.PORT);
