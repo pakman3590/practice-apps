@@ -14,21 +14,32 @@ class App extends React.Component {
         definition: 'I R Dummy'
       }]
     }
+
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   componentDidMount() {
     fetchAll((results) => {
-      console.log(results)
-
       this.setState({ words: results })
     })
   }
+
+  handleSearch(event, search) {
+    event.preventDefault();
+    fetchSearch(search, (results) => {
+      this.setState({ words: results })
+    })
+  }
+
+  // handleAdd() {
+
+  // }
 
   render() {
     return(
       <div>
         <AddWord />
-        <SearchWord />
+        <SearchWord handleSearch={this.handleSearch}/>
         <List words={this.state.words}/>
       </div>
     )
