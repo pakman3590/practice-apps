@@ -71,7 +71,7 @@ module.exports = {
   // search word fx
   searchWord(search, callback) {
     console.log('DB SEARCH');
-    Word.find({ _id: /search/}, (err, results) => {
+    Word.find({ _id: { $regex: search }}, (err, results) => {
       if (err) {
         callback(err)
       } else {
