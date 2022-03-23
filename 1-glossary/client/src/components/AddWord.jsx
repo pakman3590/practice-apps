@@ -5,8 +5,8 @@ class AddWord extends React.Component {
     super(props)
 
     this.state = {
-      newWord: '',
-      newDef: ''
+      word: '',
+      definition: ''
     }
 
     this.handleDefEntry = this.handleDefEntry.bind(this)
@@ -14,11 +14,11 @@ class AddWord extends React.Component {
   }
 
   handleWordEntry(event) {
-    this.setState({ newWord: event.target.value })
+    this.setState({ word: event.target.value })
   }
 
   handleDefEntry(event) {
-    this.setState({ newDef: event.target.value })
+    this.setState({ definition: event.target.value })
   }
 
   render() {
@@ -27,11 +27,11 @@ class AddWord extends React.Component {
         <h4>Add A Word:</h4>
         <label>
           Word:
-          <input type='text' value={this.state.newWord} onChange={this.handleWordEntry}/>
+          <input type='text' value={this.state.word} onChange={this.handleWordEntry}/>
         </label>
         <label>
           Definition:
-          <input type='text' value={this.state.newDef} onChange={this.handleDefEntry} />
+          <input type='text' value={this.state.definition} onChange={this.handleDefEntry} />
         </label>
         <input type='submit' value='Add Word' />
       </form>
