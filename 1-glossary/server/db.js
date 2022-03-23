@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-async function main() {
-  await mongoose.connect(process.env.MONGOURL || 'mongodb://localhost:3000/glossary')
-}
+
+mongoose.connect(process.env.MONGOURL || 'mongodb://localhost/glossary', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+
 
 
 // 1. Use mongoose to establish a connection to MongoDB
@@ -21,10 +24,11 @@ const Word = mongoose.model('Word', wordSchema);
 
 // add word fx
 const addWord = (word, definition, callback) => {
+  console.log('DB POST')
   const newWord = new Word({ word, definition });
   newWord.save()
-    .then(callback(null))
-    .catch(callback(err))
+    .then(() => callback(null))
+    .catch((err) => callback(err))
 }
 
 // get all words fx

@@ -11,6 +11,9 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 // all words fetch
 app.get('/words', (req, res) => {
+
+  console.log('server GET')
+
   getWords((err, results) => {
     if (err) {
       res.sendStatus(404)
@@ -23,7 +26,7 @@ app.get('/words', (req, res) => {
 // new word post
 app.post('/words', (req, res) => {
 
-  console.log('server GET')
+  console.log('server POST')
 
   let newWord = req.body.word;
   let newDef = req.body.definition;
