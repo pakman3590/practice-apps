@@ -2,6 +2,7 @@ import React from 'react';
 import AddWord from './AddWord.jsx';
 import List from './List.jsx';
 import SearchWord from './SearchWord.jsx';
+import {fetchAll, fetchSearch, postNew, editWord, deleteWord} from '../requests.js';
 
 class App extends React.Component {
   constructor(props) {

@@ -34,3 +34,5 @@ const deleteWord = (word, callback) => {
     .then(() => console.log('Word Deleted!'))
     .catch((err) => console.log(err))
 }
+
+export {fetchAll, fetchSearch, postNew, editWord, deleteWord}
