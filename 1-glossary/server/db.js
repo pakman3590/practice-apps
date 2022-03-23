@@ -43,4 +43,13 @@ module.exports = {
     })
   },
 
+  // delete word fx
+  deleteWord(word, callback) {
+    console.log('DB DELETE');
+    Word.deleteOne({ '_id': word}, (err) => {
+      if (err) {
+        callback(err)
+      }
+    })
+  }
 }
