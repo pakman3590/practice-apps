@@ -66,5 +66,17 @@ module.exports = {
         callback(null, response)
       }
     })
+  },
+
+  // search word fx
+  searchWord(search, callback) {
+    console.log('DB SEARCH');
+    Word.find({ _id: /search/}, (err, results) => {
+      if (err) {
+        callback(err)
+      } else {
+        callback(null, results)
+      }
+    })
   }
 }
