@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 async function main() {
-  await mongoose.connect(process.env.MONGOURL || 'mongodb://localhost:3000/glossary' {
-
-  })
+  await mongoose.connect(process.env.MONGOURL || 'mongodb://localhost:3000/glossary')
 }
 
 
@@ -13,10 +12,7 @@ async function main() {
 // 4. Import the models into any modules that need them
 
 const wordSchema = new Schema({
-  word: {
-    name: String,
-    unique: true
-  },
+  word: String,
   definition: String
 });
 

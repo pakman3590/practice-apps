@@ -5,7 +5,7 @@ const {addWord, getWords} = require('./db.js')
 
 const app = express();
 
-app.use(json());
+app.use(express.json());
 // Serves up all static and generated assets in ../client/dist.
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
